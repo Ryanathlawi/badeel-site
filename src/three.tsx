@@ -169,7 +169,8 @@ export function Parallax({
 
 /* ---------- the emblem, given real depth ---------- */
 
-export function Emblem3D({ size = 320 }: { size?: number }) {
+/** المقاس يأتي من CSS عبر المتغيّر --em حتى يصغر مع الشاشة */
+export function Emblem3D() {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -201,7 +202,7 @@ export function Emblem3D({ size = 320 }: { size?: number }) {
   ];
 
   return (
-    <div className="em3-scene" style={{ width: size, height: size }}>
+    <div className="em3-scene">
       <div className="em3" ref={ref}>
         {layers.map((l, i) => (
           <div

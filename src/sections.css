@@ -174,13 +174,19 @@ html[data-lang="ar"] .hero h1 {
 @media (max-width: 900px) {
   .hero-in {
     grid-template-columns: 1fr;
+    gap: 34px;
   }
   .hero-art {
-    order: -1;
+    --em: 240px;
   }
-  .emblem {
-    width: 216px;
-    height: 216px;
+}
+
+@media (max-width: 560px) {
+  .hero-art {
+    --em: min(58vw, 200px);
+  }
+  .hero h1 {
+    font-size: clamp(31px, 8.6vw, 38px);
   }
 }
 

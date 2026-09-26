@@ -1,8 +1,21 @@
 .rp-box {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-radius: var(--r-lg);
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.rp-box::-webkit-scrollbar {
+  display: none;
+}
+
+/* الصندوق يأخذ مقاس النافذة بعد التصغير، فلا يبقى فراغ تحتها */
+.rp-track {
+  position: relative;
+  flex: none;
 }
 
 .rp {

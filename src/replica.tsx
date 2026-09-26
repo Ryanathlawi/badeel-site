@@ -4,6 +4,7 @@ import { PLATFORMS, type Lang } from "./i18n.ts";
 
 const W = 1000;
 const H = 620;
+const MIN_SCALE = 0.6;
 
 type Account = { id: string; name: string; note: string };
 
@@ -125,10 +126,13 @@ export function Replica({ lang }: { lang: Lang }) {
   });
   const [picked, setPicked] = useState<string | null>("s-ryan");
 
+  /* النافذة مقاسها ثابت، فتُصغَّر لتدخل في العرض المتاح. وتحت عرض
+     معيّن يصير التصغير أصغر من أن يُقرأ، فنثبّت حدًّا أدنى ونترك
+     الصندوق نفسه يُسحب يمينًا ويسارًا بدل أن تختفي التفاصيل. */
   useLayoutEffect(() => {
     const el = box.current;
     if (!el) return;
-    const fit = () => setScale(Math.min(1, el.clientWidth / W));
+    const fit = () => setScale(Math.max(Math.min(1, el.clientWidth / W), MIN_SCALE));
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(el);
@@ -191,11 +195,12 @@ export function Replica({ lang }: { lang: Lang }) {
 
   return (
     <div className="rp-box" ref={box} dir={ar ? "rtl" : "ltr"}>
-      <div
-        className="rp"
-        style={{ width: W, height: H, transform: `scale(${scale})` }}
-        data-scaled={scale < 1 ? "yes" : "no"}
-      >
+      <div className="rp-track" style={{ width: W * scale, height: H * scale }}>
+        <div
+          className="rp"
+          style={{ width: W, height: H, transform: `scale(${scale})` }}
+          data-scaled={scale < 1 ? "yes" : "no"}
+        >
         <div className="rp-title">
           <span className="rp-dots">
             <i /> <i /> <i />
@@ -422,6 +427,7 @@ export function Replica({ lang }: { lang: Lang }) {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

@@ -296,6 +296,17 @@ button {
   border-radius: 11px;
 }
 
+/* على الشاشات اللمسية يصير أصغر هدف أربعًا وأربعين بكسلًا */
+@media (max-width: 560px) {
+  .btn-sm {
+    height: 44px;
+    padding: 0 15px;
+  }
+  .brand {
+    min-height: 44px;
+  }
+}
+
 /* ---------- pieces ---------- */
 
 .chip {

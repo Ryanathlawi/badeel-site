@@ -256,30 +256,74 @@
           { passive: false }
         );
 
-        var down = false;
+        /* إصبع واحد يسحب، وإصبعان يكبّران ويصغّران */
+        var pts = {};
         var px = 0;
         var py = 0;
+        var pinch = 0;
+
+        function centre() {
+          var k = Object.keys(pts);
+          var sx = 0;
+          var sy = 0;
+          for (var i = 0; i < k.length; i++) {
+            sx += pts[k[i]].x;
+            sy += pts[k[i]].y;
+          }
+          return { x: sx / k.length, y: sy / k.length, n: k.length };
+        }
+
+        function spread() {
+          var k = Object.keys(pts);
+          if (k.length < 2) return 0;
+          var a = pts[k[0]];
+          var b = pts[k[1]];
+          return Math.hypot(a.x - b.x, a.y - b.y);
+        }
 
         stage.addEventListener("pointerdown", function (e) {
           if (!ready) return;
-          down = true;
-          px = e.clientX;
-          py = e.clientY;
+          pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+          var c = centre();
+          px = c.x;
+          py = c.y;
+          pinch = spread();
           stage.classList.add("drag");
           stage.setPointerCapture(e.pointerId);
         });
+
         stage.addEventListener("pointermove", function (e) {
-          if (!down) return;
-          x += e.clientX - px;
-          y += e.clientY - py;
-          px = e.clientX;
-          py = e.clientY;
+          if (!pts[e.pointerId]) return;
+          pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+          var c = centre();
+          var r = stage.getBoundingClientRect();
+
+          if (c.n > 1) {
+            var now = spread();
+            if (pinch > 0 && now > 0) zoom(now / pinch, c.x - r.left, c.y - r.top);
+            pinch = now;
+          }
+
+          x += c.x - px;
+          y += c.y - py;
+          px = c.x;
+          py = c.y;
           apply();
         });
-        stage.addEventListener("pointerup", function () {
-          down = false;
-          stage.classList.remove("drag");
-        });
+
+        function lift(e) {
+          delete pts[e.pointerId];
+          var c = centre();
+          if (c.n) {
+            px = c.x;
+            py = c.y;
+          }
+          pinch = spread();
+          if (!c.n) stage.classList.remove("drag");
+        }
+
+        stage.addEventListener("pointerup", lift);
+        stage.addEventListener("pointercancel", lift);
         stage.addEventListener("dblclick", function (e) {
           if (!ready) return;
           var r = stage.getBoundingClientRect();

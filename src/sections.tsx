@@ -79,7 +79,7 @@ export function Hero({ lang }: { lang: Lang }) {
 
         <Reveal className="hero-art" delay={0.1} y={30}>
           <div className="emblem-wrap">
-            <Emblem3D size={304} />
+            <Emblem3D />
           </div>
         </Reveal>
       </div>

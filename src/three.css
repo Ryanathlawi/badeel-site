@@ -94,6 +94,8 @@ html[dir="rtl"] .mq-track.rev {
 /* ---------- the emblem with real depth ---------- */
 
 .em3-scene {
+  width: var(--em, 304px);
+  height: var(--em, 304px);
   perspective: 900px;
   display: grid;
   place-items: center;
@@ -204,6 +206,8 @@ html[dir="rtl"] .mq-track.rev {
 }
 
 .orbit {
+  --ring: 130px;
+  --face: 62px;
   position: relative;
   width: 260px;
   height: 260px;
@@ -222,15 +226,15 @@ html[dir="rtl"] .mq-track.rev {
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 62px;
-  height: 62px;
+  width: var(--face);
+  height: var(--face);
   display: grid;
   place-items: center;
   border-radius: 18px;
   color: var(--c);
   background: color-mix(in srgb, var(--panel) 92%, transparent);
   border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
-  transform: rotateY(calc(var(--i) * (360deg / var(--n)))) translateZ(130px);
+  transform: rotateY(calc(var(--i) * (360deg / var(--n)))) translateZ(var(--ring));
   transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
 
@@ -242,6 +246,22 @@ html[dir="rtl"] .mq-track.rev {
   color: var(--muted);
   font-size: 13.5px;
   min-height: 20px;
+}
+
+/* على الجوال شبكة المنصّات فوقها تكفي، والحلقة تصير زحمة */
+@media (max-width: 560px) {
+  .orbit-wrap {
+    display: none;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 760px) {
+  .orbit {
+    --ring: 108px;
+    --face: 52px;
+    width: 224px;
+    height: 224px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

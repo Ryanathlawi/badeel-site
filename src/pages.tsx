@@ -237,6 +237,13 @@ export function MapPage({ lang }: { lang: Lang }) {
               )}
             </a>
           </Reveal>
+          <Reveal delay={0.1}>
+            <p className="map-hint">
+              {ar
+                ? "اسحب المخطط يمينًا ويسارًا لتقرأه، أو افتحه في صفحة كاملة لتكبّره"
+                : "Swipe the map sideways to read it, or open it on its own page to zoom"}
+            </p>
+          </Reveal>
           <Reveal delay={0.12}>
             <div className="map-actions">
               <a className="btn btn-primary btn-sm" href={view} target="_blank" rel="noreferrer">

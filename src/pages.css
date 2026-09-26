@@ -385,6 +385,23 @@
   }
 }
 
+/* الشريط العلوي يأكل من شاشة الجوال، فيضيق */
+@media (max-width: 560px) {
+  .nav-in {
+    height: 58px;
+  }
+  .tabbar {
+    padding-block: 7px 9px;
+  }
+  .tabbar a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 12.5px;
+  }
+}
+
 /* ---------- screenshots ---------- */
 
 .shot-tabs {
@@ -395,6 +412,7 @@
 }
 
 .shot-tabs button {
+  min-height: 44px;
   padding: 9px 16px;
   border-radius: 999px;
   font-size: 13px;
@@ -431,6 +449,37 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* على الجوال يصير المخطط كاملًا أصغر من أن يُقرأ، فنعرضه بمقاس
+   مقروء داخل صندوقه ويُسحب يمينًا ويسارًا، والصفحة نفسها ثابتة */
+@media (max-width: 720px) {
+  .map-svg {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .map-svg::-webkit-scrollbar {
+    display: none;
+  }
+  .map-svg svg {
+    width: 880px;
+    max-width: none;
+  }
+}
+
+.map-hint {
+  display: none;
+  margin-top: 12px;
+  text-align: center;
+  color: var(--faint);
+  font-size: 12.5px;
+}
+
+@media (max-width: 720px) {
+  .map-hint {
+    display: block;
+  }
 }
 
 .map-wait {
