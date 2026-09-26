@@ -262,7 +262,7 @@ export function Replica({ lang }: { lang: Lang }) {
                     <Emblem />
                   </div>
                   <div className="rp-hero-txt">
-                    <span className="rp-hi">{ar ? "مساء الخير، Genji" : "Good evening, Genji"}</span>
+                    <span className="rp-hi">{ar ? "مساء الخير، ريان" : "Good evening, Ryan"}</span>
                     <h4>{ar ? "أهلًا بك في بديل" : "Welcome to badeel"}</h4>
                     <p>
                       {ar

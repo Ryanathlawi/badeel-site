@@ -37,8 +37,13 @@ def font(name, size):
     return ImageFont.truetype(os.path.join(FONTS, name), size)
 
 
-AR = lambda s: font("IBMPlexSansArabic-Medium.ttf", s)
-EN = lambda s: font("segoeuib.ttf", s)
+def AR(size):
+    return font("IBMPlexSansArabic-Medium.ttf", size)
+
+
+def EN(size):
+    """نفس الخط المرفق مع المشروع، فلا يعتمد المولّد على خط من النظام."""
+    return font("IBMPlexSansArabic-Medium.ttf", size)
 
 
 def hexagon(cx, cy, r):
