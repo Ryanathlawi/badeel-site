@@ -91,6 +91,7 @@ const ar: Inside = {
         "يقرأ إعداداتك من مجلد واحد هو APPDATA\\badeel، أو من مجلد UserData بجانب الملف إن أردته محمولًا",
         "يطلب صلاحية المستخدم العادي فقط، ولو طلب منك ويندوز صلاحيات مدير فاعلم أن هذا ليس بديل",
         "يقرأ ملف الملفات الشخصية ليعرف من يستخدم الجهاز، ويعرض شاشة الاختيار إن كان فيها أكثر من ملف",
+        "وإن شغّلت نشاط ديسكورد من الإعدادات فتح أنبوبًا محلّيًا مع برنامج ديسكورد على جهازك، لا اتصال شبكة، وهو مطفأ ما لم تشغّله بنفسك",
       ],
     },
     {
@@ -322,6 +323,7 @@ const en: Inside = {
         "It reads your settings from a single folder, APPDATA\\badeel, or from a UserData folder next to the file if you want it portable",
         "It asks for ordinary user rights only. If Windows ever asks you for administrator rights, that is not badeel",
         "It reads the profiles file to see who uses this machine, and shows the picker when there is more than one",
+        "If you turned on the Discord activity in settings, it opens a local pipe to the Discord client on your machine, not a network connection, and it stays off unless you turn it on",
       ],
     },
     {

@@ -29,7 +29,7 @@
 <text x="1792" y="88" font-size="14" font-weight="400" fill="#9aa8ba" text-anchor="start">‏كل قطعة في البرنامج وكيف تتحدث مع التي بعدها: الواجهة، المحرّك، الخزنة، ويندوز، المنصّات السبع، ومجلد بياناتك المشفّر</text>
 <text x="1792" y="112" font-size="12.5" font-weight="400" fill="#66748a" text-anchor="start">‏الخطّ المتصل: حركة ملفات على جهازك · الخطّ المتقطّع: قراءة أو استعلام · الأرقام الذهبية تشير إلى اللقطة بجانبها</text>
 <rect x="60" y="44" width="75" height="30" rx="15.0" fill="#131a24" stroke="#25303e" stroke-width="1.5"/>
-<text class="m" x="98" y="63" font-size="12" font-weight="400" fill="#e6ecf4" text-anchor="middle">v0.1.0</text>
+<text class="m" x="98" y="63" font-size="12" font-weight="400" fill="#e6ecf4" text-anchor="middle">v0.1.1</text>
 <rect x="145" y="44" width="59" height="30" rx="15.0" fill="#131a24" stroke="#25303e" stroke-width="1.5"/>
 <text class="m" x="175" y="63" font-size="12" font-weight="400" fill="#e6ecf4" text-anchor="middle">Rust</text>
 <rect x="214" y="44" width="83" height="30" rx="15.0" fill="#131a24" stroke="#25303e" stroke-width="1.5"/>
@@ -261,7 +261,7 @@
 <text x="60" y="1406" font-size="10.5" font-weight="400" fill="#66748a" text-anchor="end">‏لو تعثّرت أي مرحلة من هذه المراحل رجع كل ملف لمسه بديل إلى حالته قبل الضغطة، وحتى غياب ملف يُحفظ كحالة ويُستعاد</text>
 <path d="M1880 1452 L40 1452" fill="none" stroke="#25303e" stroke-width="1" opacity="1"/>
 <text x="1880" y="1480" font-size="11.5" font-weight="400" fill="#66748a" text-anchor="start">‏بديل · تأسيس وتطوير ريان الأثلاوي ومؤيد المطيري · مفتوح المصدر تحت رخصة GPL-3.0</text>
-<text x="40" y="1480" font-size="11.5" font-weight="400" fill="#66748a" text-anchor="end">‏وُلِّد آليًا من scripts/map.py · v0.1.0</text>
+<text x="40" y="1480" font-size="11.5" font-weight="400" fill="#66748a" text-anchor="end">‏وُلِّد آليًا من scripts/map.py · v0.1.1</text>
 <path d="M1260 322 L1260 350" fill="none" stroke="#c3cfdd" stroke-width="1.6" marker-end="url(#arr)" opacity="0.9"/>
 <rect x="1108" y="325" width="104" height="22" rx="7" fill="#0b0f15" stroke="#25303e"/>
 <text x="1160" y="340" font-size="10.5" font-weight="400" fill="#e6ecf4" text-anchor="middle">‏يختار حسابًا</text>

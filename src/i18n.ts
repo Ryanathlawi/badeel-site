@@ -172,6 +172,11 @@ const ar: Dict = {
         title: "يحدّث نفسه بنفسه",
         body: "أي إصدار جديد يصلك كتنبيه داخل التطبيق، وينزّل ويثبّت بضغطة واحدة مع الاحتفاظ بالنسخة السابقة.",
       },
+      {
+        tag: "ديسكورد",
+        title: "نشاطك على ديسكورد، باختيارك",
+        body: "يقدر بديل أن يُظهر لأصدقائك أنه مفتوح عندك، بسطرين عامّين بلا اسم حساب ولا اسم منصّة، وهو مطفأ ما لم تشغّله بنفسك من الإعدادات.",
+      },
     ],
   },
   how: {
@@ -340,6 +345,11 @@ const en: Dict = {
         tag: "Updates",
         title: "It updates itself",
         body: "A new release arrives as a notice inside the app, downloads and installs in one click, and keeps the previous build.",
+      },
+      {
+        tag: "Discord",
+        title: "Your Discord activity, if you want it",
+        body: "badeel can show your friends that it is open, in two generic lines with no account or platform name, and it stays off unless you turn it on yourself.",
       },
     ],
   },
