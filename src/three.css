@@ -1,0 +1,256 @@
+/* ---------- cards that lean toward the cursor ---------- */
+
+.tilt {
+  perspective: 900px;
+  height: 100%;
+}
+
+.tilt-in {
+  height: 100%;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+  transition: transform 0.35s var(--ease);
+  will-change: transform;
+}
+
+.tilt:hover .tilt-in {
+  transition: transform 0.08s linear;
+}
+
+.tilt-glare .tilt-in > * {
+  position: relative;
+}
+
+.tilt-glare:hover .tilt-in > *::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    240px circle at var(--gx, 50%) var(--gy, 50%),
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 62%
+  );
+}
+
+/* ---------- the band that never stops ---------- */
+
+.mq {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-deep) 55%, transparent);
+  padding-block: 13px;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+.mq-track {
+  display: flex;
+  width: max-content;
+  gap: 34px;
+  animation: mq-run linear infinite;
+}
+
+.mq-track.rev {
+  animation-direction: reverse;
+}
+
+.mq-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  white-space: nowrap;
+  font-size: 13.5px;
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.mq-hex {
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background: var(--accent);
+  opacity: 0.8;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+@keyframes mq-run {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+html[dir="rtl"] .mq-track {
+  animation-direction: reverse;
+}
+
+html[dir="rtl"] .mq-track.rev {
+  animation-direction: normal;
+}
+
+/* ---------- the emblem with real depth ---------- */
+
+.em3-scene {
+  perspective: 900px;
+  display: grid;
+  place-items: center;
+}
+
+.em3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--ex, 0deg)) rotateX(var(--ey, 0deg));
+  transition: transform 0.5s var(--ease);
+  animation: em3-float 9s ease-in-out infinite;
+}
+
+@keyframes em3-float {
+  0%,
+  100% {
+    translate: 0 -6px;
+  }
+  50% {
+    translate: 0 6px;
+  }
+}
+
+.em3-hex,
+.em3-core,
+.em3-ring,
+.em3-scan {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform-style: preserve-3d;
+}
+
+.em3-hex {
+  width: 62%;
+  height: 62%;
+  border: 1.6px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.em3-ring {
+  width: 88%;
+  height: 88%;
+  border-radius: 999px;
+  border: 1.6px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.em3-r1 {
+  animation: spin 11s linear infinite;
+  transform: translateZ(30px);
+}
+
+.em3-r2 {
+  width: 104%;
+  height: 104%;
+  border-top-color: var(--accent-2);
+  border-right-color: transparent;
+  border-left-color: color-mix(in srgb, var(--accent-2) 35%, transparent);
+  animation: spin 16s linear infinite reverse;
+  transform: translateZ(-14px);
+}
+
+.em3-core {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  transform: translateZ(78px);
+  filter: drop-shadow(0 0 22px color-mix(in srgb, var(--live) 55%, transparent));
+}
+
+.em3-scan {
+  width: 58%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-2), transparent);
+  transform: translateZ(66px);
+  animation: em3-scan 3.6s var(--ease) infinite;
+  opacity: 0.8;
+}
+
+@keyframes em3-scan {
+  0% {
+    translate: 0 -74px;
+    opacity: 0;
+  }
+  18%,
+  82% {
+    opacity: 0.85;
+  }
+  100% {
+    translate: 0 74px;
+    opacity: 0;
+  }
+}
+
+/* ---------- the platforms on a turning ring ---------- */
+
+.orbit-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  perspective: 1100px;
+}
+
+.orbit {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  transform-style: preserve-3d;
+  transform: rotateX(-16deg);
+  animation: orbit-turn 26s linear infinite;
+}
+
+@keyframes orbit-turn {
+  to {
+    transform: rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.orbit-face {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--c);
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  transform: rotateY(calc(var(--i) * (360deg / var(--n)))) translateZ(130px);
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.orbit-face:hover {
+  background: color-mix(in srgb, var(--c) 16%, var(--panel));
+}
+
+.orbit-label {
+  color: var(--muted);
+  font-size: 13.5px;
+  min-height: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .em3,
+  .mq-track,
+  .em3-r1,
+  .em3-r2,
+  .em3-scan {
+    animation: none !important;
+  }
+}

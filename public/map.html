@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مخطط بديل</title>
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0e1219" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <style>
+      :root {
+        --bg: #0e1219;
+        --panel: #151b25;
+        --line: #232c3a;
+        --text: #e7edf5;
+        --faint: #8b99ab;
+        --accent: #2ab6a6;
+        --font: system-ui, "Segoe UI", Tahoma, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        flex: none;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--panel);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .hex {
+        width: 16px;
+        height: 16px;
+        background: var(--accent);
+        clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      }
+      .sub {
+        color: var(--faint);
+        font-size: 12.5px;
+      }
+      .tools {
+        margin-inline-start: auto;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      button,
+      .lnk {
+        font: inherit;
+        font-size: 12.5px;
+        color: var(--text);
+        background: color-mix(in srgb, var(--accent) 12%, transparent);
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 6px 11px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      button:hover,
+      .lnk:hover {
+        background: color-mix(in srgb, var(--accent) 24%, transparent);
+        border-color: var(--accent);
+      }
+      button:focus-visible,
+      .lnk:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .pct {
+        color: var(--faint);
+        font-size: 12px;
+        min-width: 46px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
+      #stage {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        cursor: grab;
+        touch-action: none;
+        direction: ltr;
+      }
+      #stage.drag {
+        cursor: grabbing;
+      }
+      #holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: 0 0;
+      }
+      #holder svg {
+        display: block;
+      }
+      #wait {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: var(--faint);
+        font-size: 13px;
+      }
+      .hint {
+        color: var(--faint);
+        font-size: 11.5px;
+      }
+      @media (max-width: 680px) {
+        .sub,
+        .hint {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="brand"><i class="hex"></i><span id="ttl">مخطط بديل</span></span>
+      <span class="sub" id="sub">كل قطعة في البرنامج وكيف تتحدث مع التي بعدها</span>
+      <div class="tools">
+        <span class="hint" id="hint">اسحب للتحريك وعجلة الفأرة للتكبير</span>
+        <button id="out" title="-">&minus;</button>
+        <span class="pct" id="pct">100%</span>
+        <button id="in" title="+">+</button>
+        <button id="fit">ملء الشاشة</button>
+        <button id="one">1:1</button>
+        <button id="flip">English</button>
+        <a class="lnk" id="dl" download>نزّل</a>
+      </div>
+    </header>
+    <div id="stage"><div id="holder"></div><p id="wait">يُحمّل المخطط</p></div>
+    <script>
+      (function () {
+        var q = new URLSearchParams(location.search);
+        var lang = q.get("lang") === "en" ? "en" : "ar";
+        var ar = lang === "ar";
+        var d = document.documentElement;
+        d.lang = lang;
+        d.dir = ar ? "rtl" : "ltr";
+
+        var txt = {
+          ttl: ar ? "مخطط بديل" : "The badeel map",
+          sub: ar
+            ? "كل قطعة في البرنامج وكيف تتحدث مع التي بعدها"
+            : "Every piece of the program and how it talks to the next",
+          hint: ar ? "اسحب للتحريك وعجلة الفأرة للتكبير" : "drag to move, wheel to zoom",
+          fit: ar ? "ملء الشاشة" : "Fit to screen",
+          flip: ar ? "English" : "العربية",
+          dl: ar ? "نزّل الملف" : "Download",
+          wait: ar ? "يُحمّل المخطط" : "Loading the map",
+          fail: ar ? "تعذّر تحميل المخطط" : "The map could not be loaded"
+        };
+
+        function g(id) {
+          return document.getElementById(id);
+        }
+
+        document.title = txt.ttl;
+        g("ttl").textContent = txt.ttl;
+        g("sub").textContent = txt.sub;
+        g("hint").textContent = txt.hint;
+        g("fit").textContent = txt.fit;
+        g("flip").textContent = txt.flip;
+        g("dl").textContent = txt.dl;
+        g("wait").textContent = txt.wait;
+
+        var url = "diagram/badeel-" + lang + ".svg";
+        g("dl").href = url;
+        g("dl").setAttribute("download", "badeel-map-" + lang + ".svg");
+        g("flip").onclick = function () {
+          location.search = "?lang=" + (ar ? "en" : "ar");
+        };
+
+        var stage = g("stage");
+        var holder = g("holder");
+        var pct = g("pct");
+        var W = 1920;
+        var H = 1520;
+        var k = 1;
+        var x = 0;
+        var y = 0;
+        var fitK = 1;
+        var ready = false;
+
+        function apply() {
+          holder.style.transform =
+            "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + k.toFixed(4) + ")";
+          pct.textContent = Math.round(k * 100) + "%";
+        }
+
+        function fit() {
+          var r = stage.getBoundingClientRect();
+          fitK = Math.min((r.width - 28) / W, (r.height - 28) / H);
+          k = fitK;
+          x = (r.width - W * k) / 2;
+          y = (r.height - H * k) / 2;
+          apply();
+        }
+
+        function zoom(mul, cx, cy) {
+          var r = stage.getBoundingClientRect();
+          if (cx === undefined) {
+            cx = r.width / 2;
+            cy = r.height / 2;
+          }
+          var nk = Math.min(Math.max(k * mul, fitK * 0.6), 6);
+          x = cx - ((cx - x) * nk) / k;
+          y = cy - ((cy - y) * nk) / k;
+          k = nk;
+          apply();
+        }
+
+        g("in").onclick = function () {
+          zoom(1.25);
+        };
+        g("out").onclick = function () {
+          zoom(1 / 1.25);
+        };
+        g("fit").onclick = fit;
+        g("one").onclick = function () {
+          zoom(1 / k);
+        };
+
+        stage.addEventListener(
+          "wheel",
+          function (e) {
+            if (!ready) return;
+            e.preventDefault();
+            var r = stage.getBoundingClientRect();
+            zoom(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX - r.left, e.clientY - r.top);
+          },
+          { passive: false }
+        );
+
+        var down = false;
+        var px = 0;
+        var py = 0;
+
+        stage.addEventListener("pointerdown", function (e) {
+          if (!ready) return;
+          down = true;
+          px = e.clientX;
+          py = e.clientY;
+          stage.classList.add("drag");
+          stage.setPointerCapture(e.pointerId);
+        });
+        stage.addEventListener("pointermove", function (e) {
+          if (!down) return;
+          x += e.clientX - px;
+          y += e.clientY - py;
+          px = e.clientX;
+          py = e.clientY;
+          apply();
+        });
+        stage.addEventListener("pointerup", function () {
+          down = false;
+          stage.classList.remove("drag");
+        });
+        stage.addEventListener("dblclick", function (e) {
+          if (!ready) return;
+          var r = stage.getBoundingClientRect();
+          if (k > fitK * 1.05) fit();
+          else zoom(1 / k, e.clientX - r.left, e.clientY - r.top);
+        });
+        addEventListener("keydown", function (e) {
+          if (!ready) return;
+          if (e.key === "+" || e.key === "=") zoom(1.25);
+          else if (e.key === "-") zoom(1 / 1.25);
+          else if (e.key === "0" || e.key === "Escape") fit();
+        });
+        addEventListener("resize", function () {
+          if (ready) fit();
+        });
+
+        fetch(url)
+          .then(function (r) {
+            if (!r.ok) throw new Error("no map");
+            return r.text();
+          })
+          .then(function (text) {
+            holder.innerHTML = text;
+            var svg = holder.querySelector("svg");
+            if (svg) {
+              var vb = (svg.getAttribute("viewBox") || "0 0 1920 1520").split(/[\s,]+/);
+              W = parseFloat(vb[2]) || W;
+              H = parseFloat(vb[3]) || H;
+              svg.setAttribute("width", String(W));
+              svg.setAttribute("height", String(H));
+            }
+            g("wait").remove();
+            ready = true;
+            fit();
+          })
+          .catch(function () {
+            g("wait").textContent = txt.fail;
+          });
+      })();
+    </script>
+  </body>
+</html>
