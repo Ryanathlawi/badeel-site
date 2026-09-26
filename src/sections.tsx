@@ -345,6 +345,16 @@ export function Team({ lang }: { lang: Lang }) {
                     </span>
                   ))}
                 </div>
+                {p.links?.length ? (
+                  <div className="person-links">
+                    {p.links.map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                        {l.label}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             </Reveal>
           ))}

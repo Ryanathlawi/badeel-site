@@ -533,6 +533,37 @@ html[data-lang="ar"] .hero h1 {
   gap: 7px;
   margin-top: 18px;
 }
+.person-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.person-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 11px;
+  font-size: 13px;
+  color: var(--text);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+}
+
+.person-links a:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.person-links span {
+  opacity: 0.6;
+  font-size: 11px;
+}
+
 
 @media (max-width: 760px) {
   .team-grid {

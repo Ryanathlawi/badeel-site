@@ -84,7 +84,13 @@ type Dict = {
     eyebrow: string;
     title: string;
     lead: string;
-    people: { name: string; role: string; bio: string; tags: string[] }[];
+    people: {
+      name: string;
+      role: string;
+      bio: string;
+      tags: string[];
+      links?: { label: string; href: string }[];
+    }[];
   };
   cta: { title: string; lead: string; download: string; source: string; note: string };
   footer: { built: string; licence: string; rights: string };
@@ -241,6 +247,10 @@ const ar: Dict = {
         role: "المؤسس ومهندس النظام والتصميم",
         bio: "مؤسس بديل والمهندس الذي بناه سطرًا سطرًا، من المحرّك الذرّي وطبقة التشفير ونظام الاسترجاع إلى الواجهة بكل بكسل فيها، سُرق حسابه مرة فرفض أن يتكرر ذلك لأحد غيره، وبنى مع مؤيد البرنامج الذي كان يتمنى وجوده ذلك اليوم.",
         tags: ["المحرّك", "التشفير", "التصميم"],
+        links: [
+          { label: "ديسكورد", href: "https://discord.gg/H8sq6Uc3kA" },
+          { label: "ادعم التطوير", href: "https://www.paypal.com/paypalme/RayanAthlawi" },
+        ],
       },
       {
         name: "مؤيد المطيري",
@@ -415,6 +425,10 @@ const en: Dict = {
         role: "Founder · systems engineering and design",
         bio: "Founder of badeel and the engineer who built it line by line: the atomic engine, the encryption layer, the rollback system, and every pixel of the interface. His own account was stolen once; he refused to let that happen to anyone else.",
         tags: ["Engine", "Encryption", "Design"],
+        links: [
+          { label: "Discord", href: "https://discord.gg/H8sq6Uc3kA" },
+          { label: "Support the work", href: "https://www.paypal.com/paypalme/RayanAthlawi" },
+        ],
       },
       {
         name: "Moayad Almutairi",
