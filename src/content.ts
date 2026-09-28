@@ -143,7 +143,7 @@ const ar: Inside = {
     {
       n: "06",
       title: "التحديث",
-      body: "الاتصال الوحيد الذي يخرج من بديل، ويمكنك إيقافه من الإعدادات.",
+      body: "لا يتصل بديل إلا بـ GitHub، يسأله عن التحديثات ويجلب منه اللوحة، ويمكنك إيقاف الاثنين من الإعدادات",
       detail: [
         "يسأل GitHub عن آخر إصدار منشور ولا يرسل معه أي معلومة عنك ولا عن جهازك",
         "لو وجد إصدارًا أحدث عرض عليك تنبيهًا داخل البرنامج وانتظر موافقتك",
@@ -250,7 +250,7 @@ const ar: Inside = {
     },
     {
       title: "راقب الشبكة",
-      body: "شغّل أي مراقب اتصالات مثل جدار حماية ويندوز أو برنامج مراقبة، ثم استخدم بديل كما تشاء، ولن ترى أي اتصال إلا عند فحص التحديثات، وتقدر أن توقف الفحص من الإعدادات فلا يبقى اتصال واحد.",
+      body: "شغّل أي مراقب اتصالات مثل جدار حماية ويندوز أو برنامج مراقبة، ثم استخدم بديل كما تشاء، ولن ترى اتصالًا إلا بـ GitHub عند فحص التحديثات وجلب اللوحة، وتقدر أن توقف الاثنين من الإعدادات فلا يبقى اتصال واحد",
     },
     {
       title: "افتح ملفاتك المشفّرة",
@@ -375,7 +375,7 @@ const en: Inside = {
     {
       n: "06",
       title: "Updating",
-      body: "The only connection that ever leaves badeel, and you can turn it off in settings.",
+      body: "badeel only ever talks to GitHub, to check for updates and fetch the board, and you can turn both off in settings.",
       detail: [
         "It asks GitHub for the latest published release and sends nothing about you or your machine with the request",
         "If a newer version exists it shows a notice inside the program and waits for your approval",
@@ -478,7 +478,7 @@ const en: Inside = {
     },
     {
       title: "Watch the network",
-      body: "Run any connection monitor, the Windows firewall or a packet watcher, and use badeel however you like. You will see no connection except the update check, and you can turn that off in settings so there is none at all.",
+      body: "Run any connection monitor, the Windows firewall or a packet watcher, and use badeel however you like. You will see no connection except to GitHub, for the update check and the board, and you can turn both off in settings so there is none at all.",
     },
     {
       title: "Open your encrypted files",
