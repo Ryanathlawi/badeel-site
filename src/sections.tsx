@@ -419,7 +419,7 @@ export function Try({ lang }: { lang: Lang }) {
           <h2>{ar ? "البرنامج داخل متصفحك" : "The app, running in your browser"}</h2>
           <p>
             {ar
-              ? "نسخة تفاعلية من نافذة بديل، اختر منصّة وتصفّح الحسابات وجرّب التبديل، ولا شيء يُثبَّت ولا شيء يُرسَل إلى أي مكان."
+              ? "نسخة تفاعلية من نافذة بديل، اختر منصّة وتصفّح الحسابات وجرّب التبديل، ولا شيء يُثبَّت ولا شيء يُرسَل إلى أي مكان"
               : "A working replica of the badeel window. Pick a platform, browse the accounts, run a switch — nothing is installed and nothing is sent anywhere."}
           </p>
         </Reveal>
@@ -503,7 +503,7 @@ export function Shots({ lang }: { lang: Lang }) {
           <h2>{ar ? "نظرة أقرب على البرنامج" : "A closer look"}</h2>
           <p>
             {ar
-              ? "لقطات حقيقية من النسخة المنشورة، بلا تجميل ولا تركيب."
+              ? "لقطات حقيقية من النسخة المنشورة، بلا تجميل ولا تركيب"
               : "Real captures from the published build, with nothing retouched."}
           </p>
         </Reveal>
@@ -561,7 +561,7 @@ export function MapTeaser({ lang }: { lang: Lang }) {
           <h2>{ar ? "المشروع كله في صورة واحدة" : "The whole project in one picture"}</h2>
           <p>
             {ar
-              ? "كل قطعة في بديل وكيف تتحدث مع التي بعدها، مع لقطات حقيقية وأرقام تشير إلى كل جزء، ورحلة التبديل كاملة من الضغطة إلى اللعب."
+              ? "كل قطعة في بديل وكيف تتحدث مع التي بعدها، مع لقطات حقيقية وأرقام تشير إلى كل جزء، ورحلة التبديل كاملة من الضغطة إلى اللعب"
               : "Every piece of badeel and how it talks to the next, with real captures, numbers pointing at each part, and the full journey of a switch from click to play."}
           </p>
         </Reveal>

@@ -205,7 +205,7 @@ export function MapPage({ lang }: { lang: Lang }) {
             <h2>{ar ? "المشروع كله في صورة واحدة" : "The whole project in one picture"}</h2>
             <p>
               {ar
-                ? "كل قطعة في بديل وكيف تتحدث مع التي بعدها، مع لقطات حقيقية من البرنامج وأرقام تشير إلى كل جزء فيها، جهازك في الأعلى يمينًا، والخزنة وبياناتك المشفّرة على اليسار، وتحتهما المصدر والتحديثات، وفي الأسفل رحلة التبديل كاملة من الضغطة إلى اللعب."
+                ? "كل قطعة في بديل وكيف تتحدث مع التي بعدها، مع لقطات حقيقية من البرنامج وأرقام تشير إلى كل جزء فيها، جهازك في الأعلى يمينًا، والخزنة وبياناتك المشفّرة على اليسار، وتحتهما المصدر والتحديثات، وفي الأسفل رحلة التبديل كاملة من الضغطة إلى اللعب"
                 : "Every piece of badeel and how it talks to the next, with real captures from the app and numbers pointing at each part. Your machine at the top, the vault and your encrypted data beside it, the source and updates below, and at the bottom the full journey of a switch from click to play."}
             </p>
           </Reveal>
