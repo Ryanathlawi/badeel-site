@@ -91,6 +91,10 @@ export function HexField() {
 
     let last = 0;
     const paint = (ms: number, dt: number) => {
+      // صفحة مرسومة بمقاس صفر، في تبويب مخفي أو معاينة، تجعل drawImage يرمي
+      // خطأً يُسقط الموقع كله صفحةً بيضاء، ولا شيء يُرسم أصلًا، ومراقب المقاس
+      // يعيد الرسم متى صار له مقاس
+      if (!w || !h) return;
       const t = ms / 1000;
 
       ctx.clearRect(0, 0, w, h);
