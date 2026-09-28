@@ -226,7 +226,7 @@ export function Replica({ lang }: { lang: Lang }) {
             </span>
             <span className="rp-chip">
               <i className="d d-acc" />
-              {ar ? "النسخة العربية · v0.1.3" : "English build · v0.1.3"}
+              {ar ? "النسخة العربية · v0.1.4" : "English build · v0.1.4"}
             </span>
           </div>
         </div>
