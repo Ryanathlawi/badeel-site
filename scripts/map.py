@@ -24,7 +24,7 @@ FONTS = os.path.join(ROOT, "src", "fonts")
 os.makedirs(OUT, exist_ok=True)
 
 W, H = 1920, 1520
-VERSION = "v0.1.4"
+VERSION = "v0.1.5"
 
 PAL = {
     "bg": "#0b0f15",
